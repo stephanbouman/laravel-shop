@@ -27,7 +27,7 @@ class CartController extends Controller
         $product = Product::find($request->product_id);
         Cart::add($product, $request->quantity);
 
-        return redirect()->route('carts.show');
+        return redirect()->route('cart.show');
     }
 
     /**
@@ -45,6 +45,6 @@ class CartController extends Controller
         $product = Product::find($request->product_id);
         Cart::remove($product);
 
-        return redirect()->route('carts.show');
+        return redirect()->route('cart.show');
     }
 }

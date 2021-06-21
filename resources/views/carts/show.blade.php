@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Winkelwagen</h1>
+    <x-page-header>Winkelwagen</x-page-header>
 
     <table border="1">
         <thead>
