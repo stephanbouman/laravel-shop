@@ -54,7 +54,7 @@ class ProductNameProvider extends Base
         'audio',
         'abb',
         'visor',
-        'tinker',
+        'thinker',
     ];
 
     protected $suffix = [
