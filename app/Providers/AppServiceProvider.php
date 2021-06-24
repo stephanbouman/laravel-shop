@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Blade;
+use Mollie\Api\MollieApiClient;
+use App\Blade\CurrencyDirective;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +25,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        CurrencyDirective::boot();
+
+        app()->bind('mollie', function(){
+            $mollie = new MollieApiClient();
+            $mollie->setApiKey(config('services.mollie.key'));
+
+            return $mollie;
+        });
 
     }
 }
