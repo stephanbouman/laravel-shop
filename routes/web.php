@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\OrderInvoiceController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -49,3 +50,12 @@ Route::resource('orders', OrderController::class)
 
 Route::post('/payment/callback', [PaymentController::class, 'update'])
     ->name('payment.update');
+
+Route::get('orders/{order}/invoice', [OrderInvoiceController::class, 'show'])
+    ->name('invoice.show');
+
+
+Route::get('orders/{order}/invoice-pdf', [OrderInvoiceController::class, 'pdf'])
+    ->name('invoice.pdf');
+
+
