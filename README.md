@@ -1,6 +1,6 @@
 # Laravel Example Shop
 
-This is my example shop. It is nothing more than an easy example for my students to show them of what Laravel can do for a developer. I've worked out some features in this implementation
+This is my example shop. It is nothing more than an easy example for my students to show them of what Laravel can do for a developer. Feel free to read through this application. I've worked out some features in this implementation: 
 
 - [Eloquent models](https://laravel.com/docs/8.x/eloquent)
 - [Blade views](https://laravel.com/docs/8.x/blade#introduction)
