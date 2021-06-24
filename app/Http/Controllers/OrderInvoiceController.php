@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
-use Spatie\Browsershot\Browsershot;
-use Illuminate\Support\Facades\Hash;
 
 class OrderInvoiceController extends Controller
 {

@@ -16,7 +16,7 @@
     <div class="w-1/3">
         <dl>
             <dt class="text-xs text-gray-600">Factuurnummer:</dt>
-            <dd>{{ $order->id }}</dd>
+            <dd>{{ $order->invoice_number }}</dd>
             <dt class="text-xs text-gray-600">Besteldatum:</dt>
             <dd>{{ $order->created_at->format('d-m-Y H:i') }}</dd>
         </dl>
@@ -33,7 +33,7 @@
             <dt class="text-xs text-gray-600">Status:</dt>
             <dd>
                 @if($order->is_open)
-                    open <a href="#">betaal</a>
+                    open
                 @endif
                 @if($order->is_paid)
                     betaald

@@ -13,3 +13,9 @@ This is my example shop. It is nothing more than an easy example for my students
 - [Model factories](https://laravel.com/docs/8.x/database-testing#defining-model-factories)
 - [Model relations](https://laravel.com/docs/8.x/eloquent-relationships)
 - [Service container binding](https://laravel.com/docs/8.x/container)
+- [Commands](https://laravel.com/docs/8.x/artisan#writing-commands)
+
+### Some other features
+- [Browsershot](https://github.com/spatie/browsershot)
+- [Mollie](https://github.com/mollie/mollie-api-php)
+- [Custom Faker Provider](https://hofmannsven.com/2021/faker-provider-in-laravel)
