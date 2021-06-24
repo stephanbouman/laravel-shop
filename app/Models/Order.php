@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Spatie\Browsershot\Browsershot;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +13,7 @@ class Order extends Model
     protected $fillable = [
         'email',
         'status',
-        'payment_id'
+        'payment_id',
     ];
 
     public function orderlines()
@@ -24,6 +25,13 @@ class Order extends Model
     {
         return $this->orderlines->sum(function (OrderLine $orderLine) {
             return $orderLine->price * $orderLine->quantity;
+        });
+    }
+
+    public function getTotalItemsAttribute()
+    {
+        return $this->orderlines->sum(function (OrderLine $orderLine) {
+            return $orderLine->quantity;
         });
     }
 
