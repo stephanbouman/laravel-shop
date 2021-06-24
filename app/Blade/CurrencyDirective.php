@@ -10,7 +10,7 @@ class CurrencyDirective
     public static function boot()
     {
         Blade::directive('currency', function ($value) {
-            return "<?php echo \App\Service\Currency::format(${value}); ?>";
+            return "<?php echo \App\Services\Currency::format(${value}); ?>";
         });
     }
 }

@@ -13,7 +13,7 @@
                 open <a href="#">betaal</a>
             @endif
             @if($order->is_paid)
-                betaald
+                betaald <a href="{{ route('invoice.show',$order) }}">factuur</a>
             @endif
         </dd>
         <dt>Totaalprijs:</dt>
