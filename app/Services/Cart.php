@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service;
+namespace App\Services;
 
 
 use App\Models\Product;
@@ -11,27 +11,53 @@ class Cart
 
     const SESSION_KEY = 'products';
 
-    public static function get()
+    private $items;
+
+    public function __construct()
     {
         $products = session()->get(self::SESSION_KEY) ?? collect();
 
-        $cartItems = $products->map(function ($quantity, $productId) {
+        $this->items = $products->map(function ($quantity, $productId) {
             $product = Product::find($productId);
 
             return collect([
-                'id'  => $product->id,
-                'name'  => $product->name,
-                'price' => $product->price,
+                'id'       => $product->id,
+                'name'     => $product->name,
+                'price'    => $product->price,
                 'quantity' => $quantity,
                 'total'    => $quantity * $product->price,
             ]);
         })->values();
 
-        return [
-            'items' => $cartItems,
-            'quantity' => $cartItems->sum('quantity'),
-            'totalPrice' => $cartItems->sum('total')
-        ];
+    }
+
+    public static function clear(){
+        session()->forget(self::SESSION_KEY);
+    }
+
+    public static function load()
+    {
+        return new self();
+    }
+
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    public function getTotalQuantity()
+    {
+        return $this->items->sum('quantity');
+    }
+
+    public function getTotalPrice()
+    {
+        return $this->items->sum('total');
+    }
+
+    public function getProducts(){
+        $productIds = $this->items->pluck('id');
+        return Product::findMany($productIds);
     }
 
     public static function add(Product $product, int $quantity = 1)
@@ -48,7 +74,8 @@ class Cart
     }
 
 
-    public static function remove(Product $product){
+    public static function remove(Product $product)
+    {
         $products = session()->get(self::SESSION_KEY) ?? collect();
         $products->forget($product->id);
 

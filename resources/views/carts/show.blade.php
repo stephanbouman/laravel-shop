@@ -15,7 +15,7 @@
         </thead>
         <tbody>
 
-        @foreach($cart['items'] as $cartItem)
+        @foreach($cart->getItems() as $cartItem)
             <tr>
                 <td>
                     <a
@@ -44,12 +44,17 @@
         <tr>
             <td>Totals</td>
             <td>&nbsp;</td>
-            <td>{{ $cart['quantity'] }}</td>
-            <td>{{ $cart['totalPrice'] }}</td>
+            <td>{{ $cart->getTotalQuantity() }}</td>
+            <td>{{ $cart->getTotalPrice()}}</td>
             <td>&nbsp;</td>
         </tr>
         </tfoot>
     </table>
-
+    <form class="bg-gray-100 p-4" method="post" action="{{ route('orders.store') }}">
+        @csrf
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email"/>
+        <button class="bg-green-500 px-3 py-2 rounded-lg text-white">Afrekenen</button>
+    </form>
 
 @endsection

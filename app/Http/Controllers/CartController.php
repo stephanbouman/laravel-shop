@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Service\Cart;
+use App\Services\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateCartRequest;
@@ -14,7 +14,7 @@ class CartController extends Controller
     public function show()
     {
         return view('carts.show')
-            ->with('cart', Cart::get());
+            ->with('cart', Cart::load());
     }
 
     /**
