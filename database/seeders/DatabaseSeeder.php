@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Order;
+use App\Models\Procon;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\OrderLine;
@@ -20,7 +21,11 @@ class DatabaseSeeder extends Seeder
         Category::factory(10)->create()->each(function (Category $category) {
             $products = Product::factory(30)->make();
 
-            $category->products()->saveMany($products);
+            $category->products()->saveMany($products)->each(function (Product $product){
+                $procons = Procon::factory(5)->make();
+                $product->procons()->saveMany($procons);
+            });
+
         });
 
         Order::factory(12)->create()->each(function (Order $order) {
